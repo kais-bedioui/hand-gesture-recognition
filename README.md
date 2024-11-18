@@ -1,5 +1,5 @@
 # Hand Sign Recognition
-This project is my implementation of a Hand Sign Recognition system as part of my application for a role within Sopra Steria.
+This project is my implementation of a Hand Sign Recognition take-home project.
 
 ## Assignment:
   In this assessment, the goal is to detect different signs using a live camera feed (webcam). It is encouraged to use the library Mediapipe[] from google which provides a built-in object detection functionalities for wrist, knuckles and fingers.
