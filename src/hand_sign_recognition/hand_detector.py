@@ -32,7 +32,7 @@ class HandDetector():
         self.detector = vision.HandLandmarker.create_from_options(options)
         self.stream = stream
 
-    def get_default_detections(self, cv2_frame=None, filename=""):
+    def get_hand_landmarks(self, cv2_frame=None, filename=""):
         """
             This inference function will extract Hand Landmarks and Handedness from provided image.
             image: CV2 np array
@@ -49,27 +49,6 @@ class HandDetector():
         image = mp.Image(image_format=mp.ImageFormat.SRGB, data=cv2_frame)
         detection_results = self.detector.detect(image)
         return detection_results
-    
-    def get_json_detections(self, cv2_frame=None, filename=""):
-        """
-           This inference function will extract Hand Landmarks and Handedness from provided image
-           in JSON format {'hand_landmarks': hand_landmarks, 'handedness': handedness}
-           
-           image: CV2 np array
-        """
-        json_detections = {}
-        if not self.stream:
-            frame = cv2.imread(filename)
-            frameRGB = cv2.cvtColor(frame,cv2.COLOR_BGR2RGB)
-            cv2_frame = np.asarray(frameRGB)
-            
-        image = mp.Image(image_format=mp.ImageFormat.SRGB, data=cv2_frame)
-        detection_results = self.detector.detect(image)
-        hand_landmarks = detection_results.hand_landmarks
-        handedness = detection_results.handedness
-        json_detections['hand_landmarks'] = hand_landmarks
-        json_detections['handedness'] = handedness
-        return json_detections
     
 if __name__=="__main__":
     detector = HandDetector()
