@@ -17,7 +17,7 @@ def main(model_asset_path="hand_landmarker.task", num_hands=2, stream=True):
         ret, frame = cap.read()
 
         if ret:
-            hand_landmarker_results = hand_detector.get_default_detections(frame)
+            hand_landmarker_results = hand_detector.get_hand_landmarks(frame)
             hand_signs = hand_sign_recogniser.hand_gestures_recognition(hand_landmarker_results)
             annotated_image = draw_landmarks_on_image(frame, hand_landmarker_results, hand_signs=hand_signs)
 
