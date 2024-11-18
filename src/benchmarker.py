@@ -77,7 +77,7 @@ def main(test_set_path='data/test_data', model_asset_path="data/models/hand_land
 
     # We use our HandDetector wrapper to intantiate the hands landmarks detector and
     # Configure it to detect one single hand.
-    detector = HandDetector(model_asset_path=model_asset_path, num_hands=num_hands, stream=False)
+    hand_landmarker = HandDetector(model_asset_path=model_asset_path, num_hands=num_hands, stream=False)
     hand_sign_recogniser = HandSignsRecogniser()
     test_run_dict = {}
     # Parse test set and run inference per image.
@@ -96,8 +96,8 @@ def main(test_set_path='data/test_data', model_asset_path="data/models/hand_land
                     print(f'**** {image_path} ****')
                     # Hand gesture Recognition
                     print('Inferring image')
-                    detection_result = detector.get_default_detections(filename=image_path)
-                    hand_sign = hand_sign_recogniser.hand_gestures_recognition(detection_result)
+                    hand_landmarks_results = hand_landmarker.get_hand_landmarks(filename=image_path)
+                    hand_sign = hand_sign_recogniser.hand_gestures_recognition(hand_landmarks_results)
                     print(f'Detected Hand sign for img {file} is {hand_sign}')
                     print('---')
                     # hand_sign is in format {'hand side': hand_sign}. We extract the value item
