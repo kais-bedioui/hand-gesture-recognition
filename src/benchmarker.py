@@ -105,7 +105,7 @@ def main(test_set_path='data/test_data', model_asset_path="data/models/hand_land
                     test_run_dict[file]['pred'] = pred_hand_sign
                     image = cv2.imread(image_path)
                     rgb_image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-                    annotated_image = draw_landmarks_on_image(rgb_image, detection_result, hand_signs=hand_sign)
+                    annotated_image = draw_landmarks_on_image(rgb_image, hand_landmarks_results, hand_signs=hand_sign)
                     annotated_image = cv2.cvtColor(annotated_image, cv2.COLOR_RGB2BGR)
                     cv2.imwrite(os.path.join(test_set_path, gt_hand_sign, f'preds_{file}'), annotated_image)
         print(test_run_dict)
