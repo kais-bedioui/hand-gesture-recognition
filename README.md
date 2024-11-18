@@ -10,7 +10,7 @@ This project is my implementation of a Hand Sign Recognition system as part of m
 - [x] Implement a Hand Sign Recognition algorithm
 - [X] Detect Three Hand Signs: Open Hand, Peace Sign, Surfer Sign
 - [X] Run live on a camera stream and visualize results on screen
-- [ ] Benchmark a hand sign detection model on a dataset of 10 images
+- [X] Benchmark a hand sign detection model on a dataset of 10 images
 
   Additionally, bonus points are assigned if:
 
@@ -64,9 +64,9 @@ You can test it out with your webcam by running
 
 `PYTHONPATH=src python3 src/live_demo.py`
 
-Where you should see the live output of the webcam.
+Where you should see the live output of the webcam. The rendering contains all 21 Landmarks drawn in their correct place, 'Right' or 'Left', referred to as *Handedness*, and the hand sign coming from this Algorithm.
 
-![Live Inference from the Webcam](docs/assets/three_pointer.png)
+![Live Inference from the Webcam](docs/assets/live_demo_screenshot.png)
 
 
 ### Benchmarking
